@@ -1,0 +1,61 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>
+
+<% if (messages.error) { %>
+	<p style="color:red"><%- messages.error %></p>
+<% } %>
+
+<% if (messages.success) { %>
+	<p style="color:green"><%- messages.success %></p>
+<% } %>	
+
+
+<table>
+ <!--Display (cards) Page-->
+ <div class="col-sm-10" style="height=100%;"><br>
+	<div class="tab-content">
+		
+		<div id="mon" class="container tab-pane active"><br>
+			<div class="container" style="height=100rem;">
+				<!--1st row-->
+				<div class="row" style="padding: 10px 10px;"><br>
+					<div class="col-sm-4 col-sm-4">
+						<div class="card bg-primary text-white" style="height: 10rem;">
+							<div class="card-body">
+
+
+
+	<% if (data) { %>
+	<% data.forEach(function(user){ %>
+		
+			<div><%= user.name %></div>
+			<div><%= user.usn%></div>
+			<div><%= user.dept %></div>
+			<div><%= user.dob %></div>
+			
+			<div><%= user.email %></div>
+			
+				<div style="float:left">
+					<a href='/users/edit/<%= user._id %>'>Edit</a> &nbsp;							
+					<form method="post" action="/users/delete/<%= user._id %>" style="float:right">
+						<input type="submit" name="delete" value='Delete' onClick="return confirm('Are you sure you want to delete?')" />
+						<input type="hidden" name="_method" value="DELETE" />
+					</form>
+				</div>
+			</td>
+		</tr>
+	<% }) %>
+	<% } %>
+
+	</div>
+	</div>
+	</div>
+
+
+
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

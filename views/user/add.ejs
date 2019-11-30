@@ -1,0 +1,47 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>	
+
+<% if (messages.error) { %>
+	<p style="color:red"><%- messages.error %></p>
+<% } %>
+
+<% if (messages.success) { %>
+	<p style="color:green"><%- messages.success %></p>
+<% } %>
+
+<form action="/users/add" method="post" name="form1">
+	<table width="25%" border="0">
+		<tr> 
+			<td>Subject Name</td>
+			<td><input type="text" name="name" id="name" value="<%= name %>" /></td>
+		</tr>
+		<tr> 
+			<td>subject Code</td>
+			<td><input type="text" name="usn" value="<%= usn %>" /></td>
+		</tr>
+		<tr> 
+			<td>Department</td>
+			<td><input type="text" name="dept" value="<%= dept %>" /></td>
+		</tr>
+		<tr> 
+			<td>Exam date</td>
+			<td><input type="text" name="dob" value="<%= dob %>" /></td>
+		</tr>
+		<tr> 
+			<td>Time</td>
+			<td><input type="text" name="email" value="<%= email %>" /></td>
+		</tr>
+		
+		<tr> 
+			<td></td>
+			<td><input type="submit" name="Submit" value="Add" /></td>
+		</tr>
+	</table>
+</form>
+
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>
